@@ -161,8 +161,6 @@ Real figures from the two installs in production, in Central America, read on
 We set them up with your brand, currency and domain, load your inventory and catalog,
 and leave your store selling.
 
-Rafael Blanco, for Kusarive Solutions LLC
-
 - Web: [kusarive.us](https://kusarive.us)
 - Email: info@kusarive.us
 - WhatsApp: [+1 407 337 0061](https://wa.me/14073370061)

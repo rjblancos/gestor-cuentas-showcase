@@ -161,8 +161,6 @@ Cifras reales de las dos instalaciones en producción, en Centroamérica, leída
 Los instalamos con tu marca, tu moneda y tu dominio, cargamos tu inventario y tu
 catálogo, y te dejamos la tienda vendiendo.
 
-Rafael Blanco, para Kusarive Solutions LLC
-
 - Web: [kusarive.us](https://kusarive.us)
 - Correo: info@kusarive.us
 - WhatsApp: [+1 407 337 0061](https://wa.me/14073370061)
