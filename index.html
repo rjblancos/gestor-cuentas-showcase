@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestor de cuentas + Tienda · Kusarive Solutions LLC</title>
+<meta name="description" content="Inventario de cuentas y perfiles, ventas, cobros y entrega automática, conectado a una tienda en línea propia.">
+<style>
+:root{--bg:#fafaf7;--card:#fff;--txt:#1d1d1b;--suave:#5c5c57;--linea:#e7e5df;--acento:#4f46e5;--acento-txt:#ffffff;--ok:#18794e}
+@media (prefers-color-scheme:dark){:root{--bg:#121211;--card:#1c1c1a;--txt:#efeee9;--suave:#a3a29b;--linea:#2e2d2a;--acento:#8b7ff0;--ok:#4cc38a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.envoltura{max-width:1040px;margin:0 auto;padding:0 16px}
+header{padding:28px 0 8px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.marca{font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+.marca span{background:var(--acento);color:var(--acento-txt);border-radius:6px;padding:2px 7px;margin-right:6px}
+.idioma button{background:none;border:1px solid var(--linea);color:var(--txt);border-radius:999px;padding:4px 12px;cursor:pointer;font:inherit;font-size:.85rem}
+.idioma button[aria-pressed=true]{background:var(--txt);color:var(--bg)}
+.portada{padding:48px 0 24px}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
+.lema{font-size:1.15rem;color:var(--suave);max-width:680px;margin:0}
+.estado{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:.9rem;color:var(--suave)}
+.estado i{width:9px;height:9px;border-radius:50%;background:var(--ok);display:inline-block}
+.cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:32px 0 8px}
+.cifra{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:18px 20px}
+.cifra b{display:block;font-size:2rem;letter-spacing:-.02em}
+.cifra small{color:var(--suave)}
+.nota{font-size:.82rem;color:var(--suave);margin:4px 0 0}
+h2{font-size:1.5rem;margin:56px 0 16px;letter-spacing:-.01em}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.bloque{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:18px 20px}
+.bloque h3{margin:0 0 6px;font-size:1.02rem}
+.bloque p{margin:0;color:var(--suave);font-size:.95rem}
+.capturas{display:grid;grid-template-columns:2fr 1fr;gap:14px;align-items:start}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}.par figure{margin:0}.par img{width:100%;height:auto;border-radius:12px;border:1px solid var(--linea);display:block}.par figcaption{font-size:.85rem;color:var(--suave);margin-top:6px}
+.idioma{display:flex;gap:6px;flex-shrink:0}@media (max-width:720px){.par{grid-template-columns:1fr}}
+.capturas figure{margin:0}
+.capturas img{width:100%;height:auto;border-radius:12px;border:1px solid var(--linea);display:block}
+.capturas figcaption{font-size:.85rem;color:var(--suave);margin-top:6px}
+.pila{display:grid;gap:14px}
+.flujo{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.95rem}
+.flujo span{background:var(--card);border:1px solid var(--linea);border-radius:10px;padding:8px 12px}
+.flujo em{color:var(--suave);font-style:normal}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+td{padding:12px 16px;border-top:1px solid var(--linea);vertical-align:top;font-size:.95rem}
+tr:first-child td{border-top:0}
+td:first-child{font-weight:700;white-space:nowrap;width:1%}
+.contacto{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:22px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+.contacto a{color:var(--txt);font-weight:600}
+.boton{background:var(--acento);color:var(--acento-txt)!important;text-decoration:none;border-radius:10px;padding:10px 16px}
+footer{padding:40px 0;color:var(--suave);font-size:.85rem}
+[data-en]{display:none}
+html[lang=en] [data-es]{display:none}
+html[lang=en] [data-en]{display:revert}
+.cifra b[data-en]{display:none}html[lang=en] .cifra b[data-es]{display:none}html[lang=en] .cifra b[data-en]{display:block}
+@media (max-width:720px){.capturas{grid-template-columns:1fr}td:first-child{white-space:normal}}
+.ancha{margin:24px 0 8px}.ancha img{width:100%;height:auto;border-radius:14px;border:1px solid var(--linea);display:block}
+.cta{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:28px;margin-top:8px}
+.cta h3{margin:0 0 6px;font-size:1.3rem}.cta p{margin:0 0 16px;color:var(--suave)}
+.movil{display:flex;gap:14px}.movil figure{flex:1}
+.portadas-movil{display:none}
+@media (max-width:700px){.ancha{display:none}.portadas-movil{display:grid;gap:14px;margin:20px 0 8px}
+.portadas-movil img{width:100%;height:auto;border-radius:12px;border:1px solid var(--linea);display:block}
+.portadas-movil figcaption{font-weight:700;margin-top:6px}}
+</style>
+</head>
+<body>
+<div class="envoltura">
+<header>
+  <div class="marca"><span data-es>Gestor de cuentas</span><span data-en>Account manager</span><span style="background:none;color:inherit;padding:0" data-es>+ Tienda</span><span style="background:none;color:inherit;padding:0" data-en>+ Store</span></div>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-l="es" aria-pressed="true">ES</button>
+    <button type="button" data-l="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<section class="portada">
+  <h1 data-es>Tu inventario de cuentas, tus ventas y tu tienda, en un solo lugar.</h1><h1 data-en>Your account inventory, your sales and your store, in one place.</h1>
+  <p class="lema" data-es>Para negocios que venden acceso a servicios digitales por perfiles. El cliente compra en tu tienda, sube su comprobante y, al aprobar el pago, el gestor le asigna un perfil libre de tu inventario con sus datos listos para usar.</p><p class="lema" data-en>For businesses that sell access to digital services by profile. The customer buys in your store, uploads the receipt and, once the payment is approved, the manager assigns a free profile from your inventory with its details ready to use.</p>
+  <div class="estado"><i></i><span data-es>En producción · Sistema propietario de Kusarive Solutions LLC</span><span data-en>In production · Proprietary system by Kusarive Solutions LLC</span></div>
+  <div class="cifras">
+    <div class="cifra"><b data-es>+1.000</b><b data-en>1,000+</b><small data-es>ventas registradas</small><small data-en>sales recorded</small></div>
+    <div class="cifra"><b data-es>+3.000</b><b data-en>3,000+</b><small data-es>clientes</small><small data-en>customers</small></div>
+    <div class="cifra"><b>440</b><small data-es>cuentas en inventario</small><small data-en>accounts in inventory</small></div>
+    <div class="cifra"><b>14</b><small data-es>vendedores con su propio espacio</small><small data-en>sellers with their own space</small></div>
+  </div>
+  <p class="nota" data-es>Cifras reales de las dos instalaciones en producción, en Centroamérica, leídas el 27-oct-2026. En producción desde mayo de 2026.</p><p class="nota" data-en>Real figures from the two installs in production, in Central America, read on 27-Oct-2026. In production since May 2026.</p>
+</section>
+
+<div class="ancha"><img src="capturas/panel.jpg" alt="Panel principal / Main dashboard" width="1440" height="900"></div>
+<div class="portadas-movil"><figure><img src="capturas/movil-gestor.jpg" alt="El gestor en el celular / The manager on a phone" width="780" height="1688"></figure></div>
+<p class="nota" data-es>El panel principal: de dónde entra el dinero, ventas, costo y ganancia real del día, renovaciones próximas e inventario disponible. Datos inventados.</p><p class="nota" data-en>The main dashboard: where the money comes from, today's sales, cost and real profit, upcoming renewals and available inventory. Made-up data; the interface is in Spanish.</p>
+
+<h2 data-es>Qué hace</h2><h2 data-en>What it does</h2>
+<div class="rejilla">
+  <div class="bloque"><h3 data-es>Inventario de cuentas y perfiles</h3><h3 data-en>Account and profile inventory</h3>
+    <p data-es>Correo, contraseña, vencimiento, costo y perfiles con PIN. Libre, ocupado, reservado o por vencer, de un vistazo.</p><p data-en>Email, password, expiry, cost and PIN-protected profiles. Free, taken, reserved or expiring, at a glance.</p></div>
+  <div class="bloque"><h3 data-es>Venta en cuatro pasos</h3><h3 data-en>Four-step sale</h3>
+    <p data-es>Cliente, servicio, cuenta o perfil, cobro y entrega, siempre desde el inventario real.</p><p data-en>Customer, service, account or profile, payment and delivery, always from the real inventory.</p></div>
+  <div class="bloque"><h3 data-es>Tienda en línea conectada</h3><h3 data-en>Connected online store</h3>
+    <p data-es>Catálogo con stock en vivo, carrito, compra con comprobante y app instalable. Se edita en el gestor y la tienda lo refleja.</p><p data-en>Catalog with live stock, cart, checkout with receipt and an installable app. Edited in the manager, mirrored by the store.</p></div>
+  <div class="bloque"><h3 data-es>Pagos por verificar</h3><h3 data-en>Payments to verify</h3>
+    <p data-es>Cada pedido con su comprobante a la vista y el stock ya reservado para él.</p><p data-en>Each order with its receipt in view and its stock already reserved.</p></div>
+  <div class="bloque"><h3 data-es>Entrega automática</h3><h3 data-en>Automatic delivery</h3>
+    <p data-es>El gestor encuentra un perfil libre real y lo asigna; el cliente ve sus datos en la página privada de su pedido.</p><p data-en>The manager finds a real free profile and assigns it; the customer sees the details on their private order page.</p></div>
+  <div class="bloque"><h3 data-es>Vencimientos y renovaciones</h3><h3 data-en>Expiry and renewals</h3>
+    <p data-es>Avisos de lo que vence, renovación en un paso y proyección a 7 y 30 días.</p><p data-en>Alerts for what is expiring, one-step renewal and a 7- and 30-day forecast.</p></div>
+  <div class="bloque"><h3 data-es>Ganancia real por moneda</h3><h3 data-en>Real profit per currency</h3>
+    <p data-es>Venta, costo y ganancia separados por moneda, sin mezclarlas nunca.</p><p data-en>Sales, cost and profit per currency, never mixed.</p></div>
+  <div class="bloque"><h3 data-es>Vendedores y revendedores</h3><h3 data-en>Sellers and resellers</h3>
+    <p data-es>Cada vendedor en su propio espacio aislado; los revendedores compran con precio propio.</p><p data-en>Each seller in an isolated space; resellers buy at their own price.</p></div>
+  <div class="bloque"><h3 data-es>Gift cards, físicos y combos</h3><h3 data-en>Gift cards, physical items and bundles</h3>
+    <p data-es>Códigos, productos físicos y combos en el mismo catálogo.</p><p data-en>Codes, physical products and bundles in the same catalog.</p></div>
+  <div class="bloque"><h3 data-es>Con tu marca</h3><h3 data-en>Under your brand</h3>
+    <p data-es>Nombre, logo, colores, iconos de la app y la moneda de tu país.</p><p data-en>Your name, logo, colors, app icons and local currency.</p></div>
+</div>
+
+<h2 data-es>Cómo se entrega un pedido</h2><h2 data-en>How an order gets delivered</h2>
+<div class="flujo">
+  <span data-es>El cliente compra en la tienda</span><span data-en>The customer buys in the store</span><em>→</em>
+  <span data-es>Sube su comprobante</span><span data-en>Uploads the receipt</span><em>→</em>
+  <span data-es>El gestor reserva el perfil</span><span data-en>The manager reserves the profile</span><em>→</em>
+  <span data-es>Se aprueba el pago</span><span data-en>The payment is approved</span><em>→</em>
+  <span data-es>Se asigna un perfil libre</span><span data-en>A free profile is assigned</span><em>→</em>
+  <span data-es>El cliente ve sus datos</span><span data-en>The customer sees the details</span>
+</div>
+<div class="par" style="margin-top:14px">
+  <figure><img src="capturas/pago-por-verificar.jpg" alt="Pago por verificar / Payment to verify" loading="lazy" width="540" height="728"><figcaption data-es>El pedido llega con su comprobante y el inventario ya reservado.</figcaption><figcaption data-en>The order arrives with its receipt and the inventory already reserved.</figcaption></figure>
+  <figure><img src="capturas/entrega-automatica.jpg" alt="Entrega automática / Automatic delivery" loading="lazy" width="540" height="758"><figcaption data-es>Al aprobar, el gestor encuentra un perfil libre real y lo entrega.</figcaption><figcaption data-en>Once approved, the manager finds a real free profile and delivers it.</figcaption></figure>
+</div>
+
+<h2 data-es>Capturas</h2><h2 data-en>Screenshots</h2>
+<div class="capturas">
+  <div class="pila">
+    <figure><img src="capturas/inventario.jpg" alt="Inventario / Inventory" loading="lazy" width="1440" height="900"><figcaption data-es>El inventario de cuentas y perfiles, con lo libre, lo ocupado y lo que requiere atención.</figcaption><figcaption data-en>The account and profile inventory: free, taken and what needs attention.</figcaption></figure>
+    <figure><img src="capturas/ventas.jpg" alt="Ventas / Sales" loading="lazy" width="1440" height="612"><figcaption data-es>Ventas con costo y ganancia real, separadas por moneda.</figcaption><figcaption data-en>Sales with real cost and profit, kept per currency.</figcaption></figure>
+    <figure><img src="capturas/catalogo.jpg" alt="Catálogo / Catalog" loading="lazy" width="1440" height="900"><figcaption data-es>El catálogo maestro: lo que se edita aquí es lo que muestra la tienda.</figcaption><figcaption data-en>The master catalog: what is edited here is what the store shows.</figcaption></figure>
+    <figure><img src="capturas/nueva-venta.jpg" alt="Nueva venta / New sale" loading="lazy" width="1440" height="900"><figcaption data-es>Una venta en cuatro pasos, desde el inventario real.</figcaption><figcaption data-en>A four-step sale, from the real inventory.</figcaption></figure>
+    <figure><img src="capturas/tienda.jpg" alt="Tienda / Store" loading="lazy" width="1440" height="900"><figcaption data-es>La tienda en línea, con stock en vivo.</figcaption><figcaption data-en>The online store, with live stock.</figcaption></figure>
+    <figure><img src="capturas/ficha.jpg" alt="Ficha / Product page" loading="lazy" width="1440" height="900"><figcaption data-es>La ficha de un producto.</figcaption><figcaption data-en>A product page.</figcaption></figure>
+    <figure><img src="capturas/compra.jpg" alt="Compra / Checkout" loading="lazy" width="1440" height="712"><figcaption data-es>La compra: el cliente elige cómo pagar y sube su comprobante.</figcaption><figcaption data-en>Checkout: the customer picks how to pay and uploads the receipt.</figcaption></figure>
+    <figure><img src="capturas/pedido-entregado.jpg" alt="Pedido entregado / Delivered order" loading="lazy" width="1440" height="900"><figcaption data-es>La página privada del pedido, con los datos entregados.</figcaption><figcaption data-en>The private order page, with the delivered details.</figcaption></figure>
+  </div>
+  <div class="pila">
+    <figure><img src="capturas/movil-gestor.jpg" alt="El gestor en el celular / The manager on a phone" loading="lazy" width="780" height="1688"><figcaption data-es>El gestor en el celular.</figcaption><figcaption data-en>The manager on a phone.</figcaption></figure>
+    <figure><img src="capturas/movil-tienda.jpg" alt="La tienda en el celular / The store on a phone" loading="lazy" width="780" height="1688"><figcaption data-es>La tienda en el celular, instalable como app.</figcaption><figcaption data-en>The store on a phone, installable as an app.</figcaption></figure>
+  </div>
+</div>
+<p class="nota" data-es>Instalación de demostración: plataformas, clientes y ventas inventados.</p><p class="nota" data-en>Demo install: made-up platforms, customers and sales.</p>
+
+<h2 data-es>Garantías técnicas</h2><h2 data-en>Technical guarantees</h2>
+<table>
+  <tr><td data-es>Inventario</td><td data-en>Inventory</td><td><span data-es>El perfil se reserva al crear el pedido y la entrega es idempotente: un pedido no se entrega dos veces.</span><span data-en>The profile is reserved when the order is created and delivery is idempotent: an order is never delivered twice.</span></td></tr>
+  <tr><td data-es>Puente</td><td data-en>Bridge</td><td><span data-es>Tienda y gestor se comunican con firma HMAC y marca de tiempo.</span><span data-en>Store and manager communicate with an HMAC signature and a timestamp.</span></td></tr>
+  <tr><td data-es>Pagos</td><td data-en>Payments</td><td><span data-es>En las pasarelas automáticas se verifica la firma del aviso y se vuelve a consultar el cobro: solo se marca pagado si importe y moneda coinciden. Los avisos repetidos se descartan.</span><span data-en>With automatic gateways the notice signature is verified and the payment is queried again: it is only marked paid if amount and currency match. Repeated notices are discarded.</span></td></tr>
+  <tr><td data-es>Pedidos privados</td><td data-en>Private orders</td><td><span data-es>Cada página de pedido se abre con un enlace firmado, no adivinable por número.</span><span data-en>Each order page opens with a signed link that cannot be guessed from the order number.</span></td></tr>
+  <tr><td data-es>Aislamiento</td><td data-en>Isolation</td><td><span data-es>Cada vendedor trabaja en su propio espacio; sus clientes, inventario y ventas no se mezclan.</span><span data-en>Each seller works in their own space; their customers, inventory and sales never mix.</span></td></tr>
+  <tr><td data-es>Acceso</td><td data-en>Access</td><td><span data-es>Segundo factor, límite de intentos y aviso de cada inicio de sesión.</span><span data-en>Second factor, attempt limits and a notice for every sign-in.</span></td></tr>
+  <tr><td data-es>Dinero</td><td data-en>Money</td><td><span data-es>Ventas, costos y ganancias por moneda; nunca se suman monedas distintas.</span><span data-en>Sales, costs and profit per currency; different currencies are never added together.</span></td></tr>
+</table>
+
+<h2 data-es>Construido con</h2><h2 data-en>Built with</h2>
+<table>
+  <tr><td>PHP</td><td><span data-es>Gestor y tienda: inventario, ventas, entregas, puente, pagos y pantallas (26.900 líneas).</span><span data-en>Manager and store: inventory, sales, delivery, bridge, payments and screens (26,900 lines).</span></td></tr>
+  <tr><td>CSS</td><td><span data-es>La interfaz de los dos (4.700 líneas).</span><span data-en>The interface of both (4,700 lines).</span></td></tr>
+  <tr><td>JavaScript</td><td><span data-es>Interacción, notificaciones y app instalable (2.100 líneas).</span><span data-en>Interaction, notifications and installable app (2,100 lines).</span></td></tr>
+  <tr><td>SQL</td><td><span data-es>Almacenamiento, con cada negocio aislado.</span><span data-en>Storage, with each business isolated.</span></td></tr>
+</table>
+
+<h2 data-es>¿Quieres tu gestor y tu tienda?</h2><h2 data-en>Want your own manager and store?</h2>
+<div class="cta">
+  <h3 data-es>Los instalamos con tu marca</h3><h3 data-en>We set them up under your brand</h3>
+  <p data-es>Con tu moneda y tu dominio. Cargamos tu inventario y tu catálogo, y te dejamos la tienda vendiendo.</p><p data-en>With your currency and domain. We load your inventory and catalog and leave your store selling.</p>
+  <div class="contacto" style="border:0;padding:0;background:none">
+    <div><strong>Rafael Blanco</strong><br><span data-es>para Kusarive Solutions LLC</span><span data-en>for Kusarive Solutions LLC</span></div>
+    <a href="https://kusarive.us">kusarive.us</a>
+    <a href="mailto:info@kusarive.us">info@kusarive.us</a>
+    <a class="boton" href="https://wa.me/14073370061">WhatsApp +1 407 337 0061</a>
+  </div>
+</div>
+
+<footer>© 2026 Kusarive Solutions LLC.</footer>
+</div>
+
+<script>
+(function(){
+  var html=document.documentElement;
+  function poner(l){
+    html.lang=l;
+    document.querySelectorAll('.idioma button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)});
+    try{localStorage.setItem('idioma',l)}catch(e){}
+  }
+  document.querySelectorAll('.idioma button').forEach(function(b){b.addEventListener('click',function(){poner(b.dataset.l)})});
+  var g=null;try{g=localStorage.getItem('idioma')}catch(e){}
+  poner(g||((navigator.language||'es').slice(0,2)==='en'?'en':'es'));
+})();
+</script>
+</body>
+</html>
