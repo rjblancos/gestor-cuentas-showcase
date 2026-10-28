@@ -168,4 +168,10 @@ Rafael Blanco, para Kusarive Solutions LLC
 - WhatsApp: [+1 407 337 0061](https://wa.me/14073370061)
 - Presentación: [PDF de 16 diapositivas](presentacion/Gestor-de-cuentas-y-Tienda-presentacion.pdf)
 
+## Novedades
+
+- **27-oct-2026** · Publicación de la vitrina, con su presentación en PDF descargable.
+
+Registro completo: [CHANGELOG.md](CHANGELOG.md).
+
 © 2026 Kusarive Solutions LLC. Ver [LICENSE](LICENSE).
