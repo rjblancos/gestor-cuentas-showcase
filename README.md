@@ -9,7 +9,7 @@
 **Sistema propietario** de Kusarive Solutions LLC ·
 [English version](README.en.md) ·
 [Página de presentación](https://rjblancos.github.io/gestor-cuentas-showcase/) ·
-**[Descargar la presentación en PDF](presentacion/Gestor-de-cuentas-y-Tienda-presentacion.pdf)** (22 diapositivas)
+**[Descargar la presentación en PDF](presentacion/Gestor-de-cuentas-y-Tienda-presentacion.pdf)** (16 diapositivas)
 
 ---
 
@@ -166,6 +166,6 @@ Rafael Blanco, para Kusarive Solutions LLC
 - Web: [kusarive.us](https://kusarive.us)
 - Correo: info@kusarive.us
 - WhatsApp: [+1 407 337 0061](https://wa.me/14073370061)
-- Presentación: [PDF de 22 diapositivas](presentacion/Gestor-de-cuentas-y-Tienda-presentacion.pdf)
+- Presentación: [PDF de 16 diapositivas](presentacion/Gestor-de-cuentas-y-Tienda-presentacion.pdf)
 
 © 2026 Kusarive Solutions LLC. Ver [LICENSE](LICENSE).
