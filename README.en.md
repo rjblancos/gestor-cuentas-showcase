@@ -8,7 +8,8 @@
 **Status:** in production ·
 **Proprietary system** by Kusarive Solutions LLC ·
 [Versión en español](README.md) ·
-[Presentation page](https://rjblancos.github.io/gestor-cuentas-showcase/)
+[Presentation page](https://rjblancos.github.io/gestor-cuentas-showcase/) ·
+**[Download the presentation as PDF](presentacion/Gestor-de-cuentas-y-Tienda-presentacion.pdf)** (22 slides, in Spanish)
 
 ---
 
@@ -165,5 +166,6 @@ Rafael Blanco, for Kusarive Solutions LLC
 - Web: [kusarive.us](https://kusarive.us)
 - Email: info@kusarive.us
 - WhatsApp: [+1 407 337 0061](https://wa.me/14073370061)
+- Presentation: [22-slide PDF](presentacion/Gestor-de-cuentas-y-Tienda-presentacion.pdf) (in Spanish)
 
 © 2026 Kusarive Solutions LLC. See [LICENSE](LICENSE).
